@@ -1,5 +1,8 @@
 // Library Array
-const myLibrary = [];
+const dune = new Book('Frank Herbert', "Dune", 352, true);
+const lotr = new Book('Tolkien', 'Lord of the rings', 450, false);
+
+let myLibrary = [dune, lotr];
 
 
 function Book(author, title, pages, read) {
@@ -11,8 +14,7 @@ function Book(author, title, pages, read) {
 Book.prototype.printBookInfo = function() {
     console.log(`${this.title} by ${this.author} has ${this.pages} pages and ${this.read}`);
 }
-// const dune = new Book('Frank Herbert', "Dune", 352, true);
-// const lotr = new Book('Tolkien', 'Lord of the rings', 450, false);
+
 
 
 let addBookButton = document.querySelector('.add-book');
@@ -41,4 +43,13 @@ function displayBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
         console.log(myLibrary[i]);
     }
+    // Table to display books on webpage
+    let bookTable = document.createElement(table);
+    function generateTableHead(table) {
+        let thead = table.createTHead();
+    }
+    let table = document.querySelector('table');
+    generateTableHead(table);
 }
+let displayBooksBtn = document.querySelector('.display-books');
+displayBooksBtn.addEventListener('click', displayBooks);
