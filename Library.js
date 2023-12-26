@@ -1,18 +1,20 @@
 // Library Array
-// const dune = new Book('Frank Herbert', "Dune", 352, true);
-// const lotr = new Book('Tolkien', 'Lord of the rings', 450, false);
+// Default books
+const dune = new Book('Frank Herbert', "Dune", 352, true);
+const lotr = new Book('Tolkien', 'Lord of the rings', 450, false);
 
-let myLibrary = [];
+
+let myLibrary = [dune, lotr];
 
 
-function Book(author, title, pages, read) {
-    this.author = author;
-    this.title = title;
-    this.pages = pages;
-    this.read = read;
+function Book(Author, Title, Pages, Read) {
+    this.Author = Author;
+    this.Title = Title;
+    this.Pages = Pages;
+    this.Read = Read;
 }
 Book.prototype.printBookInfo = function() {
-    console.log(`${this.title} by ${this.author} has ${this.pages} pages and ${this.read}`);
+    console.log(`${this.Title} by ${this.Author} has ${this.Pages} pages and ${this.Read}`);
 }
 
 
@@ -76,7 +78,6 @@ function displayBooks() {
     
     
 }
-
 
 
 
