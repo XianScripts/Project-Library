@@ -28,6 +28,8 @@ h2 {
 th {
    position: relative;
    right: 1.8rem;
+   color: #466fff;
+   font-weight: bolder;
 }
 th:nth-child(4) {
     position: relative;
