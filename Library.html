@@ -14,8 +14,33 @@
         <button type="button" class="add-book">Add a book</button>
         <button type="button" class="display-books">Display Books</button>
         <table>
-            
+
         </table>
+    </div>
+    <div class="form-modal">
+        <dialog id="favDialog">
+            <form action="">
+                <p>
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" class="author">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" class="name">
+                    <label for="pages">Pages:</label>
+                    <input type="number" name="pages" class="pages">
+                    <label for="read">Read?</label>
+                    <input type="checkbox" name="read" class="read">
+                </p>
+                <div>
+                    <button type="submit" value="cancel" formmethod="dialog">Cancel</button>
+                    <button type="submit" id="confirmBtn"formmethod="dialog">Add</button>
+                </div>
+            </form>
+        </dialog>
+        <p>
+            <button id="showDialog">Add a book</button>
+        </p>
+        <output></output>
+
     </div>
 
     <script src="Library.js"></script>
