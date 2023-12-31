@@ -49,13 +49,12 @@ confirmBtn.addEventListener('click', () => {
 showButton.addEventListener('click', () => {
     favDialog.showModal();
 });
-
-// Function to loop through array and display books
 function displayBooks() {
-    for (let i = 0; i < myLibrary.length; i++) {
-        console.log(myLibrary[i]);
-    }
-    // Table to display books on webpage
+    // Clear existing table content
+    let table = document.querySelector('table');
+    table.innerHTML = '';
+
+    // Function to generate table head
     function generateTableHead(table, data) {
         let thead = table.createTHead();
         let row = thead.insertRow();
@@ -67,6 +66,7 @@ function displayBooks() {
         }
     }
 
+    // Function to generate table rows
     function generateTable(table, data) {
         for (let element of data) {
             let row = table.insertRow();
@@ -80,22 +80,20 @@ function displayBooks() {
         }
     }
 
-
-    let table = document.querySelector('table');
     let data = Object.keys(myLibrary[0]);
     generateTableHead(table, data);
     generateTable(table, myLibrary);
-    
-    
 }
+
+
+
+
 
 let displayBooksBtn = document.querySelector('.display-books');
 displayBooksBtn.addEventListener('click', displayBooks);
 
 // function to remove books from table
-function removeBook() {
-    
-}
+
 
 
 
