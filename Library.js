@@ -2,8 +2,8 @@
 // Default books
 const dune = new Book('Frank Herbert', "Dune", 352, true);
 const lotr = new Book('Tolkien', 'Lord of the rings', 450, false);
-
-let myLibrary = [dune, lotr];
+const hPotter = new Book('Harry Potter', 'J.K. Rowling', 403, true);
+let myLibrary = [dune, lotr, hPotter];
 
 function Book(Author, Title, Pages, Read) {
     this.Author = Author;
@@ -22,7 +22,7 @@ function addBookToLibrary() {
     let author = document.querySelector('.author').value;
     let title = document.querySelector('.name').value;
     let pages = document.querySelector('.pages').value;
-    let read = document.querySelector('.read').value;
+    let read = document.querySelector('.read').checked;
     bookToAdd = new Book(author, title, pages, read);
     myLibrary.push(bookToAdd);
 }
@@ -49,6 +49,9 @@ confirmBtn.addEventListener('click', () => {
 showButton.addEventListener('click', () => {
     favDialog.showModal();
 });
+
+
+let tdReadAll;
 function displayBooks() {
     // Clear existing table content
     let table = document.querySelector('table');
@@ -56,6 +59,7 @@ function displayBooks() {
 
     // Function to generate table head
     function generateTableHead(table, data) {
+
         let thead = table.createTHead();
         let row = thead.insertRow();
         for (let key of data) {
@@ -64,6 +68,7 @@ function displayBooks() {
             th.appendChild(text);
             row.appendChild(th);
         }
+
     }
 
     // Function to generate table rows
