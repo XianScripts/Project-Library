@@ -14,6 +14,18 @@ function Book(Author, Title, Pages, Read) {
 Book.prototype.printBookInfo = function() {
     console.log(`${this.Title} by ${this.Author} has ${this.Pages} pages and ${this.Read}`);
 }
+// change books read status
+Book.prototype.readStatus = function() {
+    if(this.Read === false) {
+        this.Read = true;
+    }
+    else if (this.Read === true) {
+        this.Read = false;
+    }
+    displayBooks();
+}
+
+
 
 // Modal function to add Book
 let bookToAdd;
@@ -25,6 +37,7 @@ function addBookToLibrary() {
     let read = document.querySelector('.read').checked;
     bookToAdd = new Book(author, title, pages, read);
     myLibrary.push(bookToAdd);
+    displayBooks();
 }
 //Reset book function
 function resetBookButton() {
@@ -50,7 +63,7 @@ showButton.addEventListener('click', () => {
     favDialog.showModal();
 });
 
-
+let button;
 let tdReadAll;
 function displayBooks() {
     // Clear existing table content
@@ -75,13 +88,25 @@ function displayBooks() {
     function generateTable(table, data) {
         for (let element of data) {
             let row = table.insertRow();
-            for (key in element) {
+
+            let button = document.createElement('button');
+            button.innerText = 'Delete';
+            button.classList.add('btn');
+            let readButton = document.createElement('button');
+            readButton.innerText = 'Toggle read';
+            readButton.classList.add('btn');
+            for (let key in element) {
                 if (typeof element[key] !== 'function') {
                     let cell = row.insertCell();
                     let text = document.createTextNode(element[key]);
                     cell.appendChild(text);
                 }
             }
+
+            row.appendChild(button);
+            row.appendChild(readButton);
+            button.addEventListener('click', removeFromLibrary);
+            // readButton.addEventListener('click', readStatus);
         }
     }
 
@@ -98,7 +123,20 @@ let displayBooksBtn = document.querySelector('.display-books');
 displayBooksBtn.addEventListener('click', displayBooks);
 
 // function to remove books from table
+// button.addEventListener('click', () => {
+    // const books = myLibrary
+// })
+const books = myLibrary.children;
+function removeFromLibrary(event) {
+    const button = event.target;
+    const row = button.parentNode.parentNode;
+    const indexToRemove = row.rowIndex - 1;
 
+    myLibrary.splice(indexToRemove, 1);
+
+    row.remove();
+    displayBooks();
+}
 
 
 
