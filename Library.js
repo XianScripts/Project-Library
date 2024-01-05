@@ -106,7 +106,16 @@ function displayBooks() {
             row.appendChild(button);
             row.appendChild(readButton);
             button.addEventListener('click', removeFromLibrary);
-            // readButton.addEventListener('click', readStatus);
+            readButton.addEventListener('click', (e) => {
+               const button = e.target;
+               const row = button.parentNode.rowIndex;
+               console.log(row);
+               // equate the toggle buttons space in its row with
+               // the arrays space in order
+
+
+            myLibrary[row - 1].readStatus();
+            });
         }
     }
 
@@ -136,10 +145,19 @@ function removeFromLibrary(event) {
 
     row.remove();
     displayBooks();
+    console.log(event);
+}
+
+function toggleReadStatus(event) {
+    const button = event.target;
+    const row = button.parentNode.parentNode;
+    // console.log(dune);
+    console.log(event)
+
+
 }
 
 
+function readFunc() {
 
-
-
-
+}
